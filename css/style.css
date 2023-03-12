@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+/*==================================================
+  00. Custom Variables
+--------------------------------------------------*/
+:root {
+	/* colors */
+	--clr-primary: hsl(179, 62%, 43%);
+	--clr-primary-lt: hsl(179, 47%, 52%);
+
+	--clr-accent: hsl(71, 73%, 54%);
+	--clr-bg: hsl(208, 49%, 93%);
+
+	--clr-neutral-lg: hsl(204, 43%, 93%);
+	--clr-neutral-gb: hsl(218, 22%, 67%);
+	--clr-neutral-b: hsl(0, 0%, 0%);
+	--clr-neutral-w: hsl(0, 0%, 100%);
+
+	/* font-family */
+	--ff-ss: "Karla", sans-serif;
+
+	/* font weight */
+	--fw-n: 400;
+	--fw-b: 700;
+
+	/* font-size */
+	--fs-xs: 11px;
+	--fs-sm: 13.28px;
+	--fs-md: 16px;
+	--fs-l: 20px;
+	--fs-xl: 24px;
+	--fs-2xl: 28px;
+	--fs-3xl: 32px;
+
+	/* border radius */
+	--br-p: 10px; /* parent */
+	--br-c: 9px; /* child */
+
+	/* box shadow  */
+	--bs-clr-b: hsla(0, 0%, 0%, 0.2);
+}
+
+/*==================================================
+  01. Reset
+--------------------------------------------------*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	font: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+img,
+picture {
+	display: block;
+	max-width: 100%;
+}
+
+/*==================================================
+  02. Global Styles
+--------------------------------------------------*/
+body {
+	background: var(--clr-bg);
+	color: var(--clr-neutral-w);
+	font-family: var(--ff-ss);
+	font-size: var(--fs-md);
+	font-weight: var(--fw-n);
+	line-height: 1.5;
+	margin: 100px 5%;
+}
+
+.container {
+	border-radius: var(--br-p);
+	box-shadow: 2px 8px 32px var(--bs-clr-b);
+	margin: 0 auto;
+}
+
+.grid {
+	display: grid;
+}
+
+.main,
+.cta,
+.features {
+	padding: 40px;
+}
+
+.main {
+	background-color: var(--clr-neutral-w);
+	color: var(--clr-neutral-gb);
+	border-top-left-radius: var(--br-c);
+	border-top-right-radius: var(--br-c);
+	grid-column: span 2;
+}
+
+.primary-heading {
+	color: var(--clr-primary);
+	font-size: var(--fs-2xl);
+	font-weight: var(--fw-b);
+	margin-bottom: 16px;
+}
+
+.secondary-heading {
+	font-size: var(--fs-l);
+	font-weight: var(--fw-b);
+	margin-bottom: 12px;
+}
+
+.subtitle {
+	color: var(--clr-accent);
+}
+
+.cta {
+	background-color: var(--clr-primary);
+	border-bottom-left-radius: var(--br-c);
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.cta p {
+	margin-bottom: 45px;
+}
+
+.price {
+	font-size: var(--fs-2xl);
+	font-weight: var(--fw-b);
+}
+
+.per {
+	color: var(--clr-neutral-lg);
+	padding-left: 10px;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+.btn {
+	background-color: var(--clr-accent);
+	border-radius: 5px;
+	box-shadow: 2px 8px 32px var(--bs-clr-b);
+	border-width: 0;
+	color: var(--clr-neutral-w);
+	font-size: var(--fs-md);
+	font-weight: var(--fw-b);
+	text-align: center;
+	width: 100%;
+}
+
+button a {
+	color: var(--clr-neutral-w);
+	display: block;
+	padding: 15px 0;
+	text-decoration: none;
+}
+
+button a:hover {
+	background-color: var(--clr-neutral-w);
+	border-radius: 5px;
+	color: var(--clr-accent);
+}
+
+.features {
+	background-color: var(--clr-primary-lt);
+	border-bottom-right-radius: var(--br-c);
+}
+
+.features li {
+	color: var(--clr-neutral-lg);
+}
+
+.attribution {
+	color: black;
+	font-size: var(--fs-xs);
+	text-align: center;
+	margin: 20px auto 0;
+	min-width: 300px;
+}
+
+.attribution a {
+	color: var(--clr-primary);
+}
+
+.attribution a:hover {
+	color: var(--clr-accent);
+}
+
+/*==================================================
+  03. Mobile
+--------------------------------------------------*/
+@media screen and (min-width: 726px) {
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		width: 650px;
+	}
+}
+
+@media screen and (max-width: 725px) and (min-width: 376px) {
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.main,
+	.cta,
+	.features {
+		padding: 36px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	body {
+		font-size: var(--fs-md);
+		line-height: 1.5;
+		margin: 100px 5% 0;
+	}
+
+	.container {
+		width: 100%;
+	}
+
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	.grid > * {
+		min-width: 300px;
+	}
+
+	.main,
+	.cta,
+	.features {
+		padding: 32px;
+	}
+
+	.main {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+
+	.primary-heading {
+		font-size: var(--fs-l);
+		margin-bottom: 16px;
+	}
+
+	.secondary-heading {
+		font-size: var(--fs-l);
+	}
+
+	.subtitle {
+		font-size: var(--fs-md);
+	}
+
+	.cta {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		border-radius: 0;
+	}
+
+	.features {
+		border-bottom-left-radius: var(--br-p);
+	}
+}
