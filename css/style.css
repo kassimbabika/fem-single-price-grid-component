@@ -86,6 +86,12 @@ body {
 
 .grid {
 	display: grid;
+	grid-auto-columns: 1fr; /* Keeps all automatically generated columns at an equal size */
+	grid-template-areas:
+		"main"
+		"cta"
+		"features";
+	max-width: 650px;
 }
 
 .main,
@@ -99,7 +105,7 @@ body {
 	color: var(--clr-neutral-gb);
 	border-top-left-radius: var(--br-c);
 	border-top-right-radius: var(--br-c);
-	grid-column: span 2;
+	grid-area: main;
 }
 
 .primary-heading {
@@ -122,8 +128,7 @@ body {
 .cta {
 	background-color: var(--clr-primary);
 	border-bottom-left-radius: var(--br-c);
-	grid-column-start: 1;
-	grid-column-end: 2;
+	grid-area: cta;
 }
 
 .cta p {
@@ -155,16 +160,13 @@ body {
 	font-weight: var(--fw-b);
 	text-align: center;
 	width: 100%;
-}
-
-button a {
 	color: var(--clr-neutral-w);
 	display: block;
 	padding: 15px 0;
 	text-decoration: none;
 }
 
-button a:hover {
+.btn:hover {
 	background-color: var(--clr-neutral-w);
 	border-radius: 5px;
 	color: var(--clr-accent);
@@ -173,6 +175,7 @@ button a:hover {
 .features {
 	background-color: var(--clr-primary-lt);
 	border-bottom-right-radius: var(--br-c);
+	grid-area: features;
 }
 
 .features li {
@@ -198,38 +201,23 @@ button a:hover {
 /*==================================================
   03. Mobile
 --------------------------------------------------*/
-@media screen and (min-width: 726px) {
+@media screen and (min-width: 501px) {
 	.grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		width: 650px;
+		grid-template-areas:
+			"main main"
+			"cta features";
 	}
 }
 
-@media screen and (max-width: 725px) and (min-width: 376px) {
-	.grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.main,
-	.cta,
-	.features {
-		padding: 36px;
-	}
-}
-
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 500px) {
 	body {
 		font-size: var(--fs-md);
 		line-height: 1.5;
-		margin: 100px 5% 0;
+		margin: 100px 10px 0;
 	}
 
 	.container {
 		width: 100%;
-	}
-
-	.grid {
-		grid-template-columns: 1fr;
 	}
 
 	.grid > * {
@@ -242,13 +230,8 @@ button a:hover {
 		padding: 32px;
 	}
 
-	.main {
-		grid-column-start: 1;
-		grid-column-end: 3;
-	}
-
 	.primary-heading {
-		font-size: var(--fs-l);
+		font-size: var(--fs-xl);
 		margin-bottom: 16px;
 	}
 
@@ -261,8 +244,6 @@ button a:hover {
 	}
 
 	.cta {
-		grid-column-start: 1;
-		grid-column-end: 3;
 		border-radius: 0;
 	}
 
